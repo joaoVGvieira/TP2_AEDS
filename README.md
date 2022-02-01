@@ -1,16 +1,16 @@
 # TP2_AEDS
-
+## PROBLEMA DE ROTEAMENTO DE VEÍCULOS (PRV)
 >Trabalho Prático 2 da disciplina de Algoritmos e Estruturas de Dados 1.
 
 
- ## Para Executar o Codigo 
- #### Linux:
+ ### Para Executar o Codigo 
+ ##### Linux:
 - No terminal Digite:
 ```
-teste
+make
 ```
 - Após Digite:
 
 ```
-teste
+make a
 ```
