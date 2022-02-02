@@ -27,6 +27,7 @@ void ler_arquivo(char nome_arquivo[1000]){
         printf("%d ", dista[i]);
     }
     printf("\n");
+    
     //A matriz m vai ser feita em outro lugar
     int m[N][N];
     int j, p, d, i = 0;
