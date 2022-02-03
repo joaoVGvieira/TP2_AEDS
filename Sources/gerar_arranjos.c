@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+//Verifica se a repetição nos arranjos
 char eh_sem_repeticao(int *num, int r) {
     int i, j ;
     for(i=0; i < r; i++) {
@@ -12,17 +13,15 @@ char eh_sem_repeticao(int *num, int r) {
     }
     return 1 ;
 }
-int main(){
-    char *vetor[] = {"1",  "2", "3", "4", NULL};
+//Gera os arranjos
+void gerar_arranjos(char *vetor[], int n, int r){
+    if (r == 0){
+        return 0;
+    }
     char *v[24][4] ;
     int *num ;
-    int n ;
-    int r ;
     int a = 0;
     int i, j ;
-    n = 4;
-    printf("Digite um numero para r: ");
-    scanf("%d", &r);
     num = (int *)calloc(r+1, sizeof(int));
     while ( num[r] == 0 ) {
         for(i=0; i < n; i++) {
@@ -43,15 +42,6 @@ int main(){
             }
         }
     }
-    /*
-    printf("\n");
-    for(i = 0; i < 24; i++){
-        for(j = 0; j < n; j++){
-            printf("%s ", v[i][j]);
-        }
-        printf("\n");
-    }
-    */
-    free(num) ;
-    return 0;
+    free(num);
+    return (gerar_arranjos(vetor, n, (r-1)));
 }

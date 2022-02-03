@@ -45,7 +45,6 @@ void gerar_arranjos(char *vetor[], int n, int r){
 }
 int main(){
     char *vetor[] = {"1",  "2", "3", "4", NULL};
-    int k[24] = {0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0};
     int n , r;
     n = 4;
     printf("Digite um numero para r: ");
