@@ -13,7 +13,7 @@ int verifica_repeticoes_arranjos(int *num, int p) {
     }
     return 1 ;
 }
-void gerar_arranjos(int *vetor, int n, int p){
+void gerar_arranjos(int *vetor[], int n, int p){
     // ser r for igual a 0 retorna
     if (p == 0){
         return 0;
@@ -60,7 +60,6 @@ void gerar_arranjos(int *vetor, int n, int p){
 // essa main foi feita para testar o codigo encontrado
 
 int main(){
-    //char *vetor[] = {"1",  "2", "3", "4", NULL};
     int *vetor[] = {1, 2, 3, 4, NULL};
     int n , r;
     n = 4;
