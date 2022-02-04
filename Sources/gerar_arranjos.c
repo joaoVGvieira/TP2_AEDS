@@ -65,7 +65,7 @@ int main(){
     int n , r;
     n = 4;
     // esse r é o numero ultilizado na formula de arranjo vai ser tipo n!/(n-r)!
-    printf("Digite um numero para r: ");
+    printf("Digite um numero para p: ");
     scanf("%d", &r);
     gerar_arranjos(&vetor, n, r);
     system("pause");
