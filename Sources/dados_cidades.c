@@ -1,4 +1,4 @@
-#include "Libs/dados_cidades.h"
+#include "../Libs/dados_cidades.h"
 //Função que cria um vetor de tamanho NxN para armazenar a distancia entre as N cidades
 void cria_vetor_M(Dados_Cidades *dados_cidades, int N){
     dados_cidades->M = (int**)malloc(N * sizeof(int*));

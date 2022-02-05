@@ -3,7 +3,7 @@ Precisa ainda ageitar direito
 */
 #include <stdio.h>
 #include <stdlib.h>
-#include "Libs/ler_arquivo.h"
+#include "../Libs/ler_arquivo.h"
 // Vai ler o arquivo de teste
 void ler_arquivo(char nome_arquivo[1000]){
     FILE *file = fopen(nome_arquivo,"r");

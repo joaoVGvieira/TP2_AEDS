@@ -1,6 +1,13 @@
-//#include "Libs/gerar_arranjos.h"
+#include "../Libs/gerar_arranjos.h"
 #include <stdio.h>
 #include <stdlib.h>
+//Função que cria o vetor de onde será pego 
+void vetor_cidade(Cidades *cidade, int N){
+    cidade->cidades = (int*)malloc((N-1) * sizeof(int));
+    for(int i = 0; i < N - 1; i++){
+        cidade->cidades[i] = i+1;
+    }
+}
 // esse vai comparar a repeticao dos numeros no array
 int verifica_repeticoes_arranjos(int *num, int p) {
     int i, j ;
@@ -13,16 +20,13 @@ int verifica_repeticoes_arranjos(int *num, int p) {
     }
     return 1 ;
 }
-void gerar_arranjos(int *vetor[], int n, int p){
-    // ser r for igual a 0 retorna
+void gerar_arranjos(Cidades *cidade, int N, int p){
+    // ser p for igual a 0 retorna
     if (p == 0){
         return 0;
     }
-    char *v[24][4] ;
     // *num vai ser receber um array de tamanhao r+1 para armazenar 
     int *num ;
-    // a vai ser um contador para matriz
-    int a = 0;
     // sao os contadores
     int i, j ;
     // criacao do array r+1
@@ -30,17 +34,14 @@ void gerar_arranjos(int *vetor[], int n, int p){
     num = (int *)calloc(p+1, sizeof(int));
     //esse while enquanto num[r] for igual a 0 vai percorrendo o array
     while ( num[p] == 0 ) {
-        for(i=0; i < n; i++) {
+        for(i=0; i < N; i++) {
             // aqui vai conferir se tem alguma repetição e caso tenha vai ignorar
             // caso nao seja a repetida a rota ira imprimir no terminal
             if ( verifica_repeticoes_arranjos(num, p) ) {
                 for(j=0; j < p; j++) {
-                    printf("%d ", vetor[num[j]]);
-                    //nao entendi
-                    v[a][j] = vetor[num[j]];
+                    printf("%d ", cidade->cidades[num[j]]);
                 }
                 //nao entendi
-                a++;
                 printf("\n");
             }
             //nao entendi
@@ -48,25 +49,28 @@ void gerar_arranjos(int *vetor[], int n, int p){
         }
         //nao entendi
         for(i=0; i < p; i++) {
-            if(num[i] == n) {
+            if(num[i] == N) {
                 num[i] = 0;
                 num[i+1]++ ;
             }
         }
     }
     free(num);
-    return (gerar_arranjos(vetor, n, (p-1)));
+    return (gerar_arranjos(cidade, N, (p-1)));
 }
 // essa main foi feita para testar o codigo encontrado
 
 int main(){
-    int *vetor[] = {1, 2, 3, 4, NULL};
-    int n , r;
-    n = 4;
-    // esse r é o numero ultilizado na formula de arranjo vai ser tipo n!/(n-r)!
-    printf("Digite um numero para p: ");
-    scanf("%d", &r);
-    gerar_arranjos(&vetor, n, r);
+    Cidades cidade;
+    int N , p;
+    // esse p é o numero ultilizado na formula de arranjo vai ser tipo n!/(n-r)!
+    printf("Digite um numero para N: ");
+    scanf("%d", &N);
+    p = N - 1;
+    // Ao lêr o valor de N, simula como se estivesse lendo o N do arquivo. O programa
+    // vai gerar arranjos de 1 até (N-1). Ex: N= 5, vai gerrar o arranjo entre 1,2,3,4
+    vetor_cidade(&cidade, N);
+    gerar_arranjos(&cidade, N - 1, p);
     system("pause");
     return 0;
 }
