@@ -32,8 +32,8 @@ void ler_arquivo(char nome_arquivo[1000]){
     //Lê as proximas linhas do arquivo, que contém a distância entre a cidade i e a cidade j
     //Em cada uma dessas linhas lê a cidade i, a cidade j, e a distância entre elas, respectivamente
     while (!feof(file)){
-        printf("i=%d\n", i);
         fscanf(file,"%d %d %d",&i,&j, &dist);
+        //printf("i=%d\n", i);
         m[i][j] = dist;
         m[j][i] = dist;
         m[aux][aux] = 0;
@@ -48,4 +48,10 @@ void ler_arquivo(char nome_arquivo[1000]){
         printf("]\n");
     }
     fclose(file);
+}
+//main para testar o arquivo
+int main()
+{
+    ler_arquivo("teste.txt");
+    return 0;
 }
