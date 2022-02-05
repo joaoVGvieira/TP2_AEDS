@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "Libs/ler_arquivo.h"
-#include "Libs/gerar_arranjos.h"
-#include "Libs/dados_cidades.h"
 int main(void){
     Dados_Cidades dados_cidades;
     Cidades cidades;

@@ -9,4 +9,4 @@ void vetor_cidade(Cidades *cidade, int N);
 //Função que tem como objetivo liberar a memória alocada dinamicamente para o vetor cidade
 void liber_vetor_cidade(Cidades *cidade);
 int verifica_repeticoes_arranjos(int *num, int p);
-void gerar_arranjos(Cidades *cidade, int n, int p);
+int gerar_arranjos(Cidades *cidade, int n, int p);

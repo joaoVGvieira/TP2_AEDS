@@ -20,7 +20,7 @@ int verifica_repeticoes_arranjos(int *num, int p) {
     }
     return 1 ;
 }
-void gerar_arranjos(Cidades *cidade, int N, int p){
+int gerar_arranjos(Cidades *cidade, int N, int p){
     // ser p for igual a 0 retorna
     if (p == 0){
         return 0;
