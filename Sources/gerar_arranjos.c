@@ -40,14 +40,14 @@ void gerar_arranjos(Cidades *cidade, int N, int p){
             if ( verifica_repeticoes_arranjos(num, p) ) {
                 for(j=0; j < p; j++) {
                     printf("%d ", cidade->cidades[num[j]]);
+
                 }
-                //nao entendi
                 printf("\n");
             }
             //nao entendi
             num[0]++ ;
         }
-        //nao entendi
+        //Essa vai limitar o loop do while 
         for(i=0; i < p; i++) {
             if(num[i] == N) {
                 num[i] = 0;
