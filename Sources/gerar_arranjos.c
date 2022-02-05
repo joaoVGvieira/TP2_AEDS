@@ -58,6 +58,9 @@ void gerar_arranjos(Cidades *cidade, int N, int p){
     free(num);
     return (gerar_arranjos(cidade, N, (p-1)));
 }
+void liber_vetor_cidade(Cidades *cidade){
+    free(cidade->cidades);
+}
 // essa main foi feita para testar o codigo encontrado
 
 int main(){
@@ -71,6 +74,7 @@ int main(){
     // vai gerar arranjos de 1 até (N-1). Ex: N= 5, vai gerrar o arranjo entre 1,2,3,4
     vetor_cidade(&cidade, N);
     gerar_arranjos(&cidade, N - 1, p);
+    liber_vetor_cidade(&cidade);
     system("pause");
     return 0;
 }
