@@ -1,4 +1,4 @@
-all: 
-	gcc main.c  Sources/arquivo.c
+all:  
+	gcc main.c  Sources/ler_arquivo.c Sources/dados_cidades.c Sources/gerar_arranjos.c
 a:
 	./a.out
