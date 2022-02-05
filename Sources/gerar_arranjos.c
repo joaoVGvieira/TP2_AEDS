@@ -33,14 +33,13 @@ int gerar_arranjos(Cidades *cidade, int N, int p){
     // calloc faz todas posiçoes do array ficar 0
     num = (int *)calloc(p+1, sizeof(int));
     //esse while enquanto num[r] for igual a 0 vai percorrendo o array
-    while ( num[p] == 0 ) {
+    while ( num[p] == 0 ){
         for(i=0; i < N; i++) {
             // aqui vai conferir se tem alguma repetição e caso tenha vai ignorar
             // caso nao seja a repetida a rota ira imprimir no terminal
             if ( verifica_repeticoes_arranjos(num, p) ) {
                 for(j=0; j < p; j++) {
                     printf("%d ", cidade->cidades[num[j]]);
-
                 }
                 printf("\n");
             }

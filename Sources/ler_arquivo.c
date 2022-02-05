@@ -23,6 +23,7 @@ void ler_arquivo(Dados_Cidades *dados_cidades ,Cidades *cidades ,char nome_arqui
     cria_vetor_M(dados_cidades, N);
     cria_vetor_Q(dados_cidades, N);
     vetor_cidade(cidades, N);
+    set_N(dados_cidades, N);
     //Os printf são so para eu texta ens uns arquivos e saber que está sendo lido direito
     //Vai apagar os printf depois
     int Qi;
