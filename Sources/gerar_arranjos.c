@@ -62,7 +62,8 @@ void liber_vetor_cidade(Cidades *cidade){
     free(cidade->cidades);
 }
 // essa main foi feita para testar o codigo encontrado
-
+// Vocês vao testar só por meio de arquivo quando aqui estiver comentado
+/*
 int main(){
     Cidades cidade;
     int N , p;
@@ -78,3 +79,4 @@ int main(){
     system("pause");
     return 0;
 }
+*/

@@ -1,6 +1,11 @@
 #include "../Libs/ler_arquivo.h"
+/*
+#include "../Libs/dados_cidades.h"
+#include "../Libs/gerar_arranjos.h"
+*/
 // Vai ler o arquivo de teste
-void ler_arquivo(char nome_arquivo[1000]){
+void ler_arquivo(Dados_Cidades *dados_cidades ,Cidades *cidades ,char nome_arquivo[1000]){
+    dados_cidades->soma_demanda = 0;
     FILE *file = fopen(nome_arquivo,"r");
     if(file==NULL){
         printf("Erro para abrir o arquivo de leitura!!!!");
@@ -14,38 +19,25 @@ void ler_arquivo(char nome_arquivo[1000]){
     fscanf(file,"%d\n",&N);
     //Lê a 2ª linha do arquivo
     fscanf(file,"%d\n",&Qv);
+    set_capacidade_caminhao(dados_cidades, Qv);
+    cria_vetor_M(dados_cidades, N);
+    cria_vetor_Q(dados_cidades, N);
+    vetor_cidade(cidades, N);
     //Os printf são so para eu texta ens uns arquivos e saber que está sendo lido direito
     //Vai apagar os printf depois
-    printf("N= %d\n", N);
-    printf("Qv= %d\n", Qv);
-    int Q[N];
+    int Qi;
+    int i, j, dist;
     //Lê a demanda das N cidades que estão na 3ª linha do arquivo e guarda em um vetor Q
-    for (int i = 0; i < N; i++){
-        fscanf(file,"%d\n",&Q[i]);
-        printf("%d ", Q[i]);
+    for (i = 0; i < N; i++){
+        fscanf(file,"%d\n",&Qi);
+        set_vetor_Q(dados_cidades, i, Qi);
+        set_soma_demanda(dados_cidades, Qi);
     }
-    printf("\n");
-    
-    //A matriz m vai ser feita em outro lugar
-    int m[N][N];
-    int i, j, dist, aux = 0;
     //Lê as proximas linhas do arquivo, que contém a distância entre a cidade i e a cidade j
     //Em cada uma dessas linhas lê a cidade i, a cidade j, e a distância entre elas, respectivamente
     while (!feof(file)){
-        printf("i=%d\n", i);
         fscanf(file,"%d %d %d",&i,&j, &dist);
-        m[i][j] = dist;
-        m[j][i] = dist;
-        m[aux][aux] = 0;
-        aux++;
-    }
-    //Outro printf que e só para testar
-    for (int i = 0; i < N; i++){
-        printf("[ ");
-        for(int j = 0; j <N; j++){
-            printf("%d ", m[i][j]);
-        }
-        printf("]\n");
+        set_vetor_M(dados_cidades, i, j, dist);
     }
     fclose(file);
 }
