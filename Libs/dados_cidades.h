@@ -20,8 +20,10 @@ void libera_vetor_Q(Dados_Cidades *dados_cidades, int N);
 void set_vetor_M(Dados_Cidades *dados_cidades, int i, int j, int dist);
 int get_vetor_M(Dados_Cidades *dados_cidades, int i, int j);
 
-void set_vetor_Q(Dados_Cidades *dados_cidades, int i, int Qi);
-int get_vetor_Q(Dados_Cidades *dados_cidades, int i, int j);
+void set_vetor_Q_Qi(Dados_Cidades *dados_cidades, int i, int Qi);
+int get_vetor_Q_Qi(Dados_Cidades *dados_cidades, int i);
+void set_vetor_Q_marcador(Dados_Cidades *dados_cidades, int i, int marcador);
+int get_vetor_Q_marcador(Dados_Cidades *dados_cidades, int i);
 
 void set_capacidade_caminhao(Dados_Cidades *dados_cidades, int Qv);
 int get_capacidade_caminhao(Dados_Cidades *dados_cidades);

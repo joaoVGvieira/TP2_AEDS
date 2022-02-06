@@ -37,12 +37,17 @@ int get_vetor_M(Dados_Cidades *dados_cidades, int i, int j){
     return dados_cidades->M[i][j];
 }
 
-void set_vetor_Q(Dados_Cidades *dados_cidades, int i, int Qi){
+void set_vetor_Q_Qi(Dados_Cidades *dados_cidades, int i, int Qi){
     dados_cidades->Q[i][0] = Qi;
-    dados_cidades->Q[i][1] = 0;
 }
-int get_vetor_Q(Dados_Cidades *dados_cidades, int i, int j){
-    return dados_cidades->Q[i][j];
+int get_vetor_Q_Qi(Dados_Cidades *dados_cidades, int i){
+    return dados_cidades->Q[i][0];
+}
+void set_vetor_Q_marcador(Dados_Cidades *dados_cidades, int i, int marcador){
+    dados_cidades->Q[i][1] = marcador;
+}
+int get_vetor_Q_marcador(Dados_Cidades *dados_cidades, int i){
+    return dados_cidades->Q[i][1];
 }
 void set_capacidade_caminhao(Dados_Cidades *dados_cidades, int Qv){
     dados_cidades->capacidade_caminhao = Qv;
