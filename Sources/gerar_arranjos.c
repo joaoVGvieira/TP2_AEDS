@@ -28,21 +28,25 @@ int gerar_arranjos(Cidades *cidade, int N, int p){
     // *num vai ser receber um array de tamanhao r+1 para armazenar 
     int *num ;
     // sao os contadores
-    int i, j ;
+    int i, j ,cont=0;
     // criacao do array r+1
     // calloc faz todas posiçoes do array ficar 0
     num = (int *)calloc(p+1, sizeof(int));
     //esse while enquanto num[r] for igual a 0 vai percorrendo o array
     while ( num[p] == 0 ){
-        for(i=0; i < N; i++) {
+        for(i=0; i < N; i++){
             // aqui vai conferir se tem alguma repetição e caso tenha vai ignorar
             // caso nao seja a repetida a rota ira imprimir no terminal
             if ( verifica_repeticoes_arranjos(num, p) ) {
+                printf("%d ",cont);
                 for(j=0; j < p; j++) {
                     printf("%d ", cidade->cidades[num[j]]);
+
                 }
+                printf("%d",cont);
                 printf("\n");
             }
+
             //nao entendi
             num[0]++ ;
         }
