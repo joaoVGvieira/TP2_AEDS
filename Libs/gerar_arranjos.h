@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "../Libs/dados_cidades.h"
 typedef struct{
     int *cidades;
 }Cidades;
@@ -9,4 +10,4 @@ void vetor_cidade(Cidades *cidade, int N);
 //Função que tem como objetivo liberar a memória alocada dinamicamente para o vetor cidade
 void liber_vetor_cidade(Cidades *cidade);
 int verifica_repeticoes_arranjos(int *num, int p);
-int gerar_arranjos(Cidades *cidade, int n, int p);
+int gerar_arranjos(Dados_Cidades *dados_cidades ,Cidades *cidade, int n, int p);

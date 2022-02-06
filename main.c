@@ -12,7 +12,7 @@ int main(void){
     int N, p;
     N = get_N(&dados_cidades);
     p = N - 1;
-    gerar_arranjos(&cidades, N - 1, p);
+    gerar_arranjos(&dados_cidades, &cidades, N - 1, p);
     system("pause");
     return 0;
 }

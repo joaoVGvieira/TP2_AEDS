@@ -20,7 +20,7 @@ int verifica_repeticoes_arranjos(int *num, int p) {
     }
     return 1 ;
 }
-int gerar_arranjos(Cidades *cidade, int N, int p){
+int gerar_arranjos(Dados_Cidades *dados_cidades ,Cidades *cidade, int N, int p){
     // ser p for igual a 0 retorna
     if (p == 0){
         return 0;
@@ -38,12 +38,13 @@ int gerar_arranjos(Cidades *cidade, int N, int p){
             // aqui vai conferir se tem alguma repetição e caso tenha vai ignorar
             // caso nao seja a repetida a rota ira imprimir no terminal
             if ( verifica_repeticoes_arranjos(num, p) ) {
-                printf("%d ",cont);
+                //printf("%d ",cont);
                 for(j=0; j < p; j++) {
-                    printf("%d ", cidade->cidades[num[j]]);
+                   // printf("%d ", cidade->cidades[num[j]]);
+                    printf("%d ",get_vetor_M(dados_cidades, i,j));
 
                 }
-                printf("%d",cont);
+                 // printf("%d",cont);
                 printf("\n");
             }
 
@@ -59,7 +60,7 @@ int gerar_arranjos(Cidades *cidade, int N, int p){
         }
     }
     free(num);
-    return (gerar_arranjos(cidade, N, (p-1)));
+    return (gerar_arranjos(dados_cidades, cidade, N, (p-1)));
 }
 void liber_vetor_cidade(Cidades *cidade){
     free(cidade->cidades);
