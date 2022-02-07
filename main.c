@@ -22,10 +22,9 @@ int main(void){
     cria_vetor_solucao(&solucao, (3*N));
     printf("Total arranjos uteis -> %d\n", get_arranjos_uteis(&arranjos));
     set_menor_distancia(&solucao, 0);
-    printf("-----------------------------------------\n");
     //Erro aqui
     melhor_solucao(&dados_cidades, &arranjos, &solucao);
-    //imprime_melhor_solucao(&solucao);
+    imprime_melhor_solucao(&dados_cidades, &solucao);
 
     //Print só nós arranjos possiveis
     /*

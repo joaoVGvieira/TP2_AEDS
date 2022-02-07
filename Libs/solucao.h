@@ -11,6 +11,6 @@ int get_menor_distancia(Solucao *solucao);
 
 void melhor_solucao(Dados_Cidades *dados_cidades, Arranjos *arranjos, Solucao *solucao);
 
-void imprime_melhor_solucao(Solucao *solucao);
+void imprime_melhor_solucao(Dados_Cidades *dados_cidades, Solucao *solucao);
 
 int verifica_marcadores(Dados_Cidades *dados_cidades);

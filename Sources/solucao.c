@@ -120,7 +120,6 @@ void melhor_solucao(Dados_Cidades *dados_cidades, Arranjos *arranjos, Solucao *s
                 }
             }
         }
-        printf("\n");
     }
     free(vetor_solucao);
     free(vetor_aux);
@@ -132,19 +131,19 @@ int verifica_marcadores(Dados_Cidades *dados_cidades){
             return 0;
         }
     }
-    //printf("------->return1\n");
     return 1;
 }
 
-void imprime_melhor_solucao(Solucao *solucao){
+void imprime_melhor_solucao(Dados_Cidades *dados_cidades, Solucao *solucao){
     printf("S=[ ");
-    int cid, i = 0;
-    while(1){
+    int N = get_N(dados_cidades);
+    int cid, i;
+    for(i = 0; i < (3*N); i++){
         cid = solucao->melhor_solucao[i];
-        printf("%d ", cid);
         if(cid == -1){
             break;
-        } 
+        }
+        printf("%d ", cid);
     }
     printf("]\n");
 }
