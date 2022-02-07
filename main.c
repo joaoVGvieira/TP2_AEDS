@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "Libs/ler_arquivo.h"
+#include "Libs/solucao.h"
+//#include "Libs/ler_arquivo.h"
 int main(void){
     Dados_Cidades dados_cidades;
     Arranjos arranjos;
+    Solucao solucao;
     char nome_arquivo[1000];
     printf("DIGITE O NOME DO ARQUIVO DE ENTRADA: ");
     scanf(" %[^\n]s ",nome_arquivo);
@@ -13,14 +15,20 @@ int main(void){
     N = get_N(&dados_cidades);
     p = N - 1;
     set_total_arranjos(&arranjos, N-1,p);
-    printf("Total-> %d\n", get_total_arranjos(&arranjos));
     int total_arranjos = get_total_arranjos(&arranjos);
-    cria_vetor_arranjos(&arranjos, total_arranjos, N+1);
+    cria_vetor_arranjos(&arranjos, total_arranjos, N+2);
     gerar_arranjos(&dados_cidades, &arranjos, N - 1, p);
-    printf("Total-> %d\n", get_arranjos_uteis(&arranjos));
     int arranjos_uteis = get_arranjos_uteis(&arranjos);
+    cria_vetor_solucao(&solucao, (3*N));
+    printf("Total arranjos uteis -> %d\n", get_arranjos_uteis(&arranjos));
+    set_menor_distancia(&solucao, 0);
+    printf("-----------------------------------------\n");
+    //Erro aqui
+    melhor_solucao(&dados_cidades, &arranjos, &solucao);
+    //imprime_melhor_solucao(&solucao);
 
     //Print só nós arranjos possiveis
+    /*
     int i;
     int j;
     int a;
@@ -36,6 +44,7 @@ int main(void){
         }
         printf("\n");
     }
+    */
     system("pause");
     return 0;
 }

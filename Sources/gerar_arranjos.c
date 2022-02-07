@@ -36,7 +36,7 @@ int gerar_arranjos(Dados_Cidades *dados_cidades ,Arranjos *arranjos, int N, int 
     int *aux;
     int soma_aux;
     int capacidade_caminhao = get_capacidade_caminhao(dados_cidades);
-    aux = (int*)malloc((p+2)*sizeof(int));
+    aux = (int*)malloc((p+3)*sizeof(int));
     while ( num[p] == 0 ){
         for(i=0; i < N; i++){
             // aqui vai conferir se tem alguma repetição e caso tenha vai ignorar
@@ -45,26 +45,21 @@ int gerar_arranjos(Dados_Cidades *dados_cidades ,Arranjos *arranjos, int N, int 
             int count = 0;
             if ( verifica_repeticoes_arranjos(num, p) ){
                 aux[count] = 0;
-                //printf("-0 ");
                 count++;
                 for(j=0; j < p; j++) {
-                    //printf("%d ", arranjos->cidades[num[j]]);
                     aux[count] = arranjos->cidades[num[j]];
                     soma_aux += get_vetor_Q_Qi(dados_cidades, arranjos->cidades[num[j]]);
 
                     count++;
                 }
                 aux[count] = 0;
-               // printf("0 %d\n", soma_aux);
+                count++;
+                aux[count] = -1;
                 if(soma_aux <= capacidade_caminhao){
-                    //copia_arranjos(arranjos, get_arranjos_uteis(arranjos), count);
                     int m = get_arranjos_uteis(arranjos);
-                   // printf("+");
                     for(int a = 0; a <= count; a++){
                         arranjos->arranjos[m][a] = aux[a];
-                        //printf("%d ", get_arranjos(arranjos, m, a));
                     }
-                    //printf("\n");
                     set_arranjos_uteis(arranjos);
                 }
             }

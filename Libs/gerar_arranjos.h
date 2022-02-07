@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-//#include <math.h>
 #include "../Libs/dados_cidades.h"
 typedef struct{
     int *cidades;
@@ -8,6 +7,11 @@ typedef struct{
     int total_arranjos;
     int arranjos_uteis;
 }Arranjos;
+/*
+typedef struct{
+    int *solucao;
+    int menor_distancia;
+}Solucao;*/
 //Função que armázena o número das N cidades exceto o deposito, de onde será tirado os
 // números para fazer os arranjos
 void vetor_cidade(Arranjos *arranjos, int N);
@@ -22,3 +26,10 @@ int get_arranjos(Arranjos *arranjos, int i, int j);
 void liber_vetor_cidade(Arranjos *arranjos);
 int verifica_repeticoes_arranjos(int *num, int p);
 int gerar_arranjos(Dados_Cidades *dados_cidades ,Arranjos *arranjos, int n, int p);
+/*
+void cria_vetor_solucao(Solucao *solucao, int M);
+void set_menor_distancia(Solucao *solucao, int num);
+int get_menor_distancia(Solucao *solucao);
+
+void melhor_solucao(Dados_Cidades *dados_cidades, Arranjos *arranjos, Solucao *solucao);
+*/
