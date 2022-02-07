@@ -25,25 +25,7 @@ int main(void){
     //Erro aqui
     melhor_solucao(&dados_cidades, &arranjos, &solucao);
     imprime_melhor_solucao(&dados_cidades, &solucao);
-
-    //Print só nós arranjos possiveis
-    /*
-    int i;
-    int j;
-    int a;
-    for(i = 0; i< arranjos_uteis; i++){
-        printf("%.2d->", i);
-        for(j = 0; j <= N; j++){
-            a = get_arranjos(&arranjos, i, j);
-            //printf("%d ", get_arranjos(&arranjos, i, j));
-            printf("%d ", a);
-            if(j != 0 && a == 0){
-                break;
-            }
-        }
-        printf("\n");
-    }
-    */
+    
     system("pause");
     return 0;
 }

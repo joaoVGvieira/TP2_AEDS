@@ -33,6 +33,7 @@ void melhor_solucao(Dados_Cidades *dados_cidades, Arranjos *arranjos, Solucao *s
             distancia += get_vetor_M(dados_cidades, aux1, aux2);
             set_vetor_Q_marcador(dados_cidades, aux1, 1);
         }
+       // printf("\n");
         vetor_solucao[posi] = -1;
         for(c = 0; c < arranjos_uteis; c++){
             int posi1 = posi;
@@ -42,7 +43,7 @@ void melhor_solucao(Dados_Cidades *dados_cidades, Arranjos *arranjos, Solucao *s
             int sair = 0;
             l = 0;
             while(1){
-                if(l == arranjos_uteis){
+                if(l >= arranjos_uteis){
                     break;
                 }
                 recomeca = 0;
@@ -54,28 +55,28 @@ void melhor_solucao(Dados_Cidades *dados_cidades, Arranjos *arranjos, Solucao *s
                         if(aux1 == -1){
                             break;
                         }
-                        if(get_vetor_Q_marcador(dados_cidades, aux1) == 1){
-                            l++;
-                            recomeca = 1;
-                            break;
-                        }
                     }
                 }
                 else{
                     for(j = 0; j <= (N + 2); j++){
-                        aux1 = get_arranjos(arranjos, i, j);
+                        aux1 = get_arranjos(arranjos, l, j);
                         vetor_aux[j] = aux1;
                         if(aux1 == -1){
                             break;
                         }
-                        if(get_vetor_Q_marcador(dados_cidades, aux1) == 1){
-                            l++;
-                            recomeca = 1;
-                            break;
-                        }
                     }
                 }
+                for(j = 0; j <= (N*2); j++){
+                    aux1 = vetor_aux[j];
+                    if(get_vetor_Q_marcador(dados_cidades, aux1) == 1){
+                        l++;
+                        recomeca = 1;
+                        break;
+                    }
+                }
+                //printf("---->1\n");
                 if(recomeca == 0){
+                    //printf("---->1\n");
                     l = 0;
                     for(j = 0; j <= (N + 2); j++){
                         aux1 = vetor_aux[j];
@@ -89,29 +90,33 @@ void melhor_solucao(Dados_Cidades *dados_cidades, Arranjos *arranjos, Solucao *s
                         set_vetor_Q_marcador(dados_cidades, aux1, 1);
                     }
                     vetor_solucao[posi1] = -1;
+                    
                     if(verifica_marcadores(dados_cidades) == 1){
                         sair = 1;
                         if(get_menor_distancia(solucao) == 0){
                             set_menor_distancia(solucao, dist1);
                             for(j = 0; j < (3*N); j++){
                                 aux1 = vetor_solucao[j];
-                                aux2 = vetor_solucao[j+1];
+                                printf("%d ", aux1);
+                                //aux2 = vetor_solucao[j+1];
                                 solucao->melhor_solucao[j] = aux1;
                                 if(aux1 == -1){
                                     break;
                                 }
                             }
+                           // printf("\n");
                         }
                         else if(dist1 < (get_menor_distancia(solucao))){
                             set_menor_distancia(solucao, dist1);
                             for(j = 0; j < (3*N); j++){
                                 aux1 = vetor_solucao[j];
-                                aux2 = vetor_solucao[j+1];
+                                //aux2 = vetor_solucao[j+1];
                                 solucao->melhor_solucao[j] = aux1;
                                 if(aux1 == -1){
                                     break;
                                 }
                             }
+                            // printf("\n");
                         }
                     }
                 }
