@@ -1,7 +1,7 @@
 #include "../Libs/solucao.h"
 
 void cria_vetor_solucao(Solucao *solucao, int M){
-    solucao->melhor_solucao = (int*)malloc(M * sizeof(int));
+    solucao->melhor_solucao = (int*)calloc(M, sizeof(int));
 }
 void set_menor_distancia(Solucao *solucao, int num){
     solucao->menor_distancia = num;
@@ -16,16 +16,18 @@ void melhor_solucao(Dados_Cidades *dados_cidades, Arranjos *arranjos, Solucao *s
     int *vetor_solucao;
     vetor_solucao = (int*)malloc((3*N) * sizeof(int));
     int *vetor_aux;
-    vetor_aux = (int*)malloc((N+2)*sizeof(int));
+    vetor_aux = (int*)calloc((N+2),sizeof(int));
     int l,c,i,j, distancia, aux1, aux2, posi;
     for(i = 0; i < arranjos_uteis; i++){
+        for(j = 0; j < N; j++){
+            set_vetor_Q_marcador(dados_cidades, j, 0);
+        }
         posi = 0;
         distancia = 0;
         for(j = 0; j <= (N + 2); j++){
             aux1 = get_arranjos(arranjos, i, j);
             aux2 = get_arranjos(arranjos, i, j+1);
             vetor_solucao[posi] = aux1;
-            //printf("%d ", aux1);
             posi++;
             if(aux2 == -1){
                 break;
@@ -33,7 +35,6 @@ void melhor_solucao(Dados_Cidades *dados_cidades, Arranjos *arranjos, Solucao *s
             distancia += get_vetor_M(dados_cidades, aux1, aux2);
             set_vetor_Q_marcador(dados_cidades, aux1, 1);
         }
-       // printf("\n");
         vetor_solucao[posi] = -1;
         for(c = 0; c < arranjos_uteis; c++){
             int posi1 = posi;
@@ -65,18 +66,21 @@ void melhor_solucao(Dados_Cidades *dados_cidades, Arranjos *arranjos, Solucao *s
                             break;
                         }
                     }
+                    l++;
                 }
-                for(j = 0; j <= (N*2); j++){
+                int a;
+                for(j = 0; j <= (N + 2); j++){
                     aux1 = vetor_aux[j];
-                    if(get_vetor_Q_marcador(dados_cidades, aux1) == 1){
-                        l++;
+                    if(aux1 == -1){
+                        break;
+                    }
+                    a = get_vetor_Q_marcador(dados_cidades, aux1);
+                    if(aux1 != 0 && a == 1){
                         recomeca = 1;
                         break;
                     }
-                }
-                //printf("---->1\n");
+                }    
                 if(recomeca == 0){
-                    //printf("---->1\n");
                     l = 0;
                     for(j = 0; j <= (N + 2); j++){
                         aux1 = vetor_aux[j];
@@ -90,21 +94,18 @@ void melhor_solucao(Dados_Cidades *dados_cidades, Arranjos *arranjos, Solucao *s
                         set_vetor_Q_marcador(dados_cidades, aux1, 1);
                     }
                     vetor_solucao[posi1] = -1;
-                    
                     if(verifica_marcadores(dados_cidades) == 1){
                         sair = 1;
                         if(get_menor_distancia(solucao) == 0){
                             set_menor_distancia(solucao, dist1);
                             for(j = 0; j < (3*N); j++){
                                 aux1 = vetor_solucao[j];
-                                printf("%d ", aux1);
                                 //aux2 = vetor_solucao[j+1];
                                 solucao->melhor_solucao[j] = aux1;
                                 if(aux1 == -1){
                                     break;
                                 }
                             }
-                           // printf("\n");
                         }
                         else if(dist1 < (get_menor_distancia(solucao))){
                             set_menor_distancia(solucao, dist1);
@@ -116,7 +117,6 @@ void melhor_solucao(Dados_Cidades *dados_cidades, Arranjos *arranjos, Solucao *s
                                     break;
                                 }
                             }
-                            // printf("\n");
                         }
                     }
                 }
