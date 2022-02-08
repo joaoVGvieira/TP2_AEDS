@@ -140,7 +140,7 @@ int verifica_marcadores(Dados_Cidades *dados_cidades){
 }
 
 void imprime_melhor_solucao(Dados_Cidades *dados_cidades, Solucao *solucao){
-    printf("S=[ ");
+    printf("\nS=[ ");
     int N = get_N(dados_cidades);
     int cid, i;
     for(i = 0; i < (3*N); i++){
