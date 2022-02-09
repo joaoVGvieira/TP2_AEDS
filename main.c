@@ -23,13 +23,12 @@ int main(void){
     gerar_arranjos(&dados_cidades, &arranjos, N - 1, p);
     int arranjos_uteis = get_arranjos_uteis(&arranjos);
     cria_vetor_solucao(&solucao, (3*N));
-    ///printf("Total arranjos uteis -> %d\n", get_arranjos_uteis(&arranjos));
     set_menor_distancia(&solucao, 0);
     //Erro aqui
     melhor_solucao(&dados_cidades, &arranjos, &solucao);
     imprime_melhor_solucao(&dados_cidades, &solucao);
-    //printf("Distancia %d\n", get_menor_distancia(&solucao));
     tempo_execu =  clock()- tempo_execu;
     printf("\nTempo De Execucao: %f segundos\n\n",(((float)tempo_execu)/(float)CLOCKS_PER_SEC));
+    system("pause");
     return 0;
 }
