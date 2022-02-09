@@ -28,7 +28,8 @@ int main(void){
     //Erro aqui
     melhor_solucao(&dados_cidades, &arranjos, &solucao);
     imprime_melhor_solucao(&dados_cidades, &solucao);
+    //printf("Distancia %d\n", get_menor_distancia(&solucao));
     tempo_execu =  clock()- tempo_execu;
-    printf("\nTempo De Execução: %f segundos\n\n",(((float)tempo_execu)/(float)CLOCKS_PER_SEC));
+    printf("\nTempo De Execucao: %f segundos\n\n",(((float)tempo_execu)/(float)CLOCKS_PER_SEC));
     return 0;
 }
