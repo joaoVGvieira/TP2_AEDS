@@ -13,7 +13,6 @@ int get_menor_distancia(Solucao *solucao){
     return solucao->menor_distancia;
 }
 
-
 void melhor_solucao(Dados_Cidades *dados_cidades, Arranjos *arranjos, Solucao *solucao){
     int N = get_N(dados_cidades);
     int arranjos_uteis = get_arranjos_uteis(arranjos);
