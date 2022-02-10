@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "Libs/solucao.h"
 #include <time.h>
-//#include "Libs/ler_arquivo.h"
+
 int main(void){
     clock_t tempo_execu;
     Dados_Cidades dados_cidades;
@@ -11,7 +11,6 @@ int main(void){
     char nome_arquivo[1000];
     printf("DIGITE O NOME DO ARQUIVO DE ENTRADA: ");
     scanf(" %[^\n]s ",nome_arquivo);
-    //Chama a função que vai ler os dados do arquivo
     tempo_execu = clock();
     ler_arquivo(&dados_cidades,&arranjos ,nome_arquivo);
     int N, p;
