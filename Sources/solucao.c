@@ -1,7 +1,10 @@
 #include "../Libs/solucao.h"
 
-void cria_vetor_solucao(Solucao *solucao, int M){
+void cria_vetor_melhor_solucao(Solucao *solucao, int M){
     solucao->melhor_solucao = (int*)calloc(M, sizeof(int));
+}
+void free_vetor_melhor_solucao(Solucao *solucao){
+    free(solucao->melhor_solucao);
 }
 void set_menor_distancia(Solucao *solucao, int num){
     solucao->menor_distancia = num;
@@ -26,7 +29,6 @@ void melhor_solucao(Dados_Cidades *dados_cidades, Arranjos *arranjos, Solucao *s
     int qtd_caminhoes, soma_demanda, capacidade_caminhao;
     soma_demanda = get_soma_demanda(dados_cidades);
     capacidade_caminhao = get_capacidade_caminhao(dados_cidades);
-    
     if(soma_demanda % capacidade_caminhao != 0){
     qtd_caminhoes = soma_demanda / capacidade_caminhao + 1;
     }
@@ -35,7 +37,7 @@ void melhor_solucao(Dados_Cidades *dados_cidades, Arranjos *arranjos, Solucao *s
     }
     int i, j;
     int *indice;
-    indice = (int*)malloc(arranjos_uteis * sizeof(int));
+    indice = (int*)malloc(qtd_caminhoes * sizeof(int));
     int *possivel_solucao;
     possivel_solucao = (int*)malloc((qtd_caminhoes*(N+2)) * sizeof(int));
     int *numeracao_arranjos;
@@ -113,6 +115,9 @@ void melhor_solucao(Dados_Cidades *dados_cidades, Arranjos *arranjos, Solucao *s
         }
     }
     free(num);
+    free(indice);
+    free(possivel_solucao);
+    free(numeracao_arranjos);
 }
 void imprime_melhor_solucao(Dados_Cidades *dados_cidades, Solucao *solucao){
     printf("\nS=[ ");
@@ -126,6 +131,5 @@ void imprime_melhor_solucao(Dados_Cidades *dados_cidades, Solucao *solucao){
         printf("%d ", aux);
         i++;
     }
-    
     printf("]\n");
 }

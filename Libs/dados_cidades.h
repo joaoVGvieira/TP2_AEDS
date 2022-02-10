@@ -13,8 +13,8 @@ void cria_vetor_M(Dados_Cidades *dados_cidades, int N);
 // se a cidade já foi atendida
 void cria_vetor_Q(Dados_Cidades *dados_cidades, int N);
 //Função que tem como objetivo liberar a memória alocada dinamicamente para os vetores M e Q
-void libera_vetor_M(Dados_Cidades *dados_cidades, int N);
-void libera_vetor_Q(Dados_Cidades *dados_cidades, int N);
+void free_vetor_M(Dados_Cidades *dados_cidades, int N);
+void free_vetor_Q(Dados_Cidades *dados_cidades, int N);
 
 // gets e sets:
 void set_vetor_M(Dados_Cidades *dados_cidades, int i, int j, int dist);

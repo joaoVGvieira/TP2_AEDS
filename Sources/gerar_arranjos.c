@@ -2,11 +2,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 //Função que cria o vetor de onde será pego 
-void vetor_cidade(Arranjos *arranjos, int N){
+void cria_vetor_cidade(Arranjos *arranjos, int N){
     arranjos->cidades = (int*)malloc((N-1) * sizeof(int));
     for(int i = 0; i < N - 1; i++){
         arranjos->cidades[i] = i+1;
     }
+}
+void free_vetor_cidade(Arranjos *arranjos){
+    free(arranjos->cidades);
 }
 // esse vai comparar a repeticao dos numeros no array
 int verifica_repeticoes_arranjos(int *num, int p) {
@@ -78,14 +81,6 @@ int gerar_arranjos(Dados_Cidades *dados_cidades ,Arranjos *arranjos, int N, int 
     free(num);
     return (gerar_arranjos(dados_cidades, arranjos, N, (p-1)));
 }
-/*void copia_arranjos(Arranjos *arranjos, int i, int j){
-    for(int p = 0; p <= j; p++){
-        arranjos->arranjos[i][j] = 
-    }
-}*/
-void liber_vetor_cidade(Arranjos *arranjos){
-    free(arranjos->cidades);
-}
 
 void cria_vetor_arranjos(Arranjos *arranjos, int total_arranjos, int M){
     arranjos->arranjos = (int**)malloc(total_arranjos * sizeof(int*));
@@ -93,8 +88,13 @@ void cria_vetor_arranjos(Arranjos *arranjos, int total_arranjos, int M){
         arranjos->arranjos[i] = (int*)malloc(M * sizeof(int));
     }
 }
+void free_vetor_arranjos(Arranjos *arranjos, int total_arranjos){
+    for(int i = 0; i < total_arranjos; i++){
+        free(arranjos->arranjos[i]);
+    }
+    free(arranjos->arranjos);
+}
 int set_total_arranjos(Arranjos *arranjos, int N, int P){
-    int n = N;
     int p = N - P;
     int fact_N = 1;
     int fact = 1;

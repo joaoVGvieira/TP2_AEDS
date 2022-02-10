@@ -21,12 +21,15 @@ int main(void){
     int total_arranjos = get_total_arranjos(&arranjos);
     cria_vetor_arranjos(&arranjos, total_arranjos, N+2);
     gerar_arranjos(&dados_cidades, &arranjos, N - 1, p);
-    int arranjos_uteis = get_arranjos_uteis(&arranjos);
-    cria_vetor_solucao(&solucao, (3*N));
+    cria_vetor_melhor_solucao(&solucao, (3*N));
     set_menor_distancia(&solucao, 0);
-    //Erro aqui
     melhor_solucao(&dados_cidades, &arranjos, &solucao);
     imprime_melhor_solucao(&dados_cidades, &solucao);
+    free_vetor_M(&dados_cidades, N);
+    free_vetor_Q(&dados_cidades, N);
+    free_vetor_arranjos(&arranjos, total_arranjos);
+    free_vetor_cidade(&arranjos);
+    free_vetor_melhor_solucao(&solucao);
     tempo_execu =  clock()- tempo_execu;
     printf("\nTempo De Execucao: %f segundos\n\n",(((float)tempo_execu)/(float)CLOCKS_PER_SEC));
     system("pause");

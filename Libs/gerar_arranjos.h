@@ -7,29 +7,21 @@ typedef struct{
     int total_arranjos;
     int arranjos_uteis;
 }Arranjos;
-/*
-typedef struct{
-    int *solucao;
-    int menor_distancia;
-}Solucao;*/
+
 //Função que armázena o número das N cidades exceto o deposito, de onde será tirado os
 // números para fazer os arranjos
-void vetor_cidade(Arranjos *arranjos, int N);
+void cria_vetor_cidade(Arranjos *arranjos, int N);
+//Vetor onde fica armazenados todos os arranjos gerados, desde que atendão as condições
 void cria_vetor_arranjos(Arranjos *arranjos, int total_arranjos, int M);
+//Função que verifica se foi gerado um arranjo com repetiçoes
+int verifica_repeticoes_arranjos(int *num, int p);
+//função que gera todos os os arranjos possiveis 
+int gerar_arranjos(Dados_Cidades *dados_cidades ,Arranjos *arranjos, int n, int p);
+void free_vetor_cidade(Arranjos *arranjos);
+void free_vetor_arranjos(Arranjos *arranjos, int total_arranjos);
+// gets e sets:
 int set_total_arranjos(Arranjos *arranjos, int N, int p);
 int get_total_arranjos(Arranjos *arranjos);
 void set_arranjos_uteis(Arranjos *arranjos);
 int get_arranjos_uteis(Arranjos *arranjos);
-//void copia_arranjos(Arranjos *arranjos, int i, int j);
 int get_arranjos(Arranjos *arranjos, int i, int j);
-//Função que tem como objetivo liberar a memória alocada dinamicamente para o vetor cidade
-void liber_vetor_cidade(Arranjos *arranjos);
-int verifica_repeticoes_arranjos(int *num, int p);
-int gerar_arranjos(Dados_Cidades *dados_cidades ,Arranjos *arranjos, int n, int p);
-/*
-void cria_vetor_solucao(Solucao *solucao, int M);
-void set_menor_distancia(Solucao *solucao, int num);
-int get_menor_distancia(Solucao *solucao);
-
-void melhor_solucao(Dados_Cidades *dados_cidades, Arranjos *arranjos, Solucao *solucao);
-*/
