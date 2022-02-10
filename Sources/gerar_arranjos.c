@@ -8,9 +8,11 @@ void cria_vetor_cidade(Arranjos *arranjos, int N){
         arranjos->cidades[i] = i+1;
     }
 }
+
 void free_vetor_cidade(Arranjos *arranjos){
     free(arranjos->cidades);
 }
+
 // esse vai comparar a repeticao dos numeros no array
 int verifica_repeticoes_arranjos(int *num, int p) {
     int i, j ;
@@ -23,6 +25,7 @@ int verifica_repeticoes_arranjos(int *num, int p) {
     }
     return 1 ;
 }
+
 int gerar_arranjos(Dados_Cidades *dados_cidades ,Arranjos *arranjos, int N, int p){
     // ser p for igual a 0 retorna
     if (p == 0){

@@ -17,6 +17,7 @@ void cria_vetor_arranjos(Arranjos *arranjos, int total_arranjos, int M);
 int verifica_repeticoes_arranjos(int *num, int p);
 //função que gera todos os os arranjos possiveis 
 int gerar_arranjos(Dados_Cidades *dados_cidades ,Arranjos *arranjos, int n, int p);
+//Função que libera memória dos vetores alocados dinamicamente
 void free_vetor_cidade(Arranjos *arranjos);
 void free_vetor_arranjos(Arranjos *arranjos, int total_arranjos);
 // gets e sets:

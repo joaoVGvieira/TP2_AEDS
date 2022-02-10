@@ -13,15 +13,6 @@ int get_menor_distancia(Solucao *solucao){
     return solucao->menor_distancia;
 }
 
-int verifica_marcadores(Dados_Cidades *dados_cidades){
-    int N = get_N(dados_cidades);
-    for(int i = 1; i < N; i++){
-        if(get_vetor_Q_marcador(dados_cidades, i) == 0){
-            return 0;
-        }
-    }
-    return 1;
-}
 
 void melhor_solucao(Dados_Cidades *dados_cidades, Arranjos *arranjos, Solucao *solucao){
     int N = get_N(dados_cidades);
