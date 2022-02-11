@@ -31,11 +31,11 @@ int gerar_arranjos(Dados_Cidades *dados_cidades ,Arranjos *arranjos, int N, int 
     if (p == 0){
         return 0;
     }
-    // *num vai ser receber um array de tamanhao r+1 para armazenar 
+    // *num vai ser receber um array de tamanhao p+1 para armazenar 
     int *num ;
     // sao os contadores
     int i, j;
-    // criacao do array r+1
+    // criacao do array p+1
     // calloc faz todas posiçoes do array ficar 0
     num = (int *)calloc(p+1, sizeof(int));
     //esse while enquanto num[r] for igual a 0 vai percorrendo o array
@@ -50,26 +50,31 @@ int gerar_arranjos(Dados_Cidades *dados_cidades ,Arranjos *arranjos, int N, int 
             int soma_aux = 0;
             int count = 0;
             if ( verifica_repeticoes_arranjos(num, p) ){
+                // coloca 0 no começo
                 aux[count] = 0;
                 count++;
                 for(j=0; j < p; j++) {
+                    // guarda o arranjo gerado das cidades
                     aux[count] = arranjos->cidades[num[j]];
+                    //soma a demanda das cidades presente no arranjo
                     soma_aux += get_vetor_Q_Qi(dados_cidades, arranjos->cidades[num[j]]);
-
                     count++;
                 }
+                // coloca 0 no final
                 aux[count] = 0;
                 count++;
                 aux[count] = -1;
+                // quando a soma da demanda for maior que a capacidade da demanda nao passa pelo if;
                 if(soma_aux <= capacidade_caminhao){
+                    // retorna o numero de arranjos uteis
                     int m = get_arranjos_uteis(arranjos);
                     for(int a = 0; a <= count; a++){
                         arranjos->arranjos[m][a] = aux[a];
                     }
+                    //incremeta +um arranjo
                     set_arranjos_uteis(arranjos);
                 }
             }
-            //nao entendi
             num[0]++ ;
         }
         //Essa vai limitar o loop do while 
@@ -82,6 +87,7 @@ int gerar_arranjos(Dados_Cidades *dados_cidades ,Arranjos *arranjos, int N, int 
     }
     free(aux);
     free(num);
+    // faz ficar recursivo
     return (gerar_arranjos(dados_cidades, arranjos, N, (p-1)));
 }
 
