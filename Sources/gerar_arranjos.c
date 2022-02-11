@@ -46,7 +46,7 @@ int gerar_arranjos(Dados_Cidades *dados_cidades ,Arranjos *arranjos, int N, int 
     while ( num[p] == 0 ){
         for(i=0; i < N; i++){
             // aqui vai conferir se tem alguma repetição e caso tenha vai ignorar
-            // caso nao seja a repetida a rota ira imprimir no terminal
+            // caso nao seja a repetida a rota ira ser gardada
             int soma_aux = 0;
             int count = 0;
             if ( verifica_repeticoes_arranjos(num, p) ){
@@ -90,19 +90,22 @@ int gerar_arranjos(Dados_Cidades *dados_cidades ,Arranjos *arranjos, int N, int 
     // faz ficar recursivo
     return (gerar_arranjos(dados_cidades, arranjos, N, (p-1)));
 }
-
+// Cria o vetor arranjo
 void cria_vetor_arranjos(Arranjos *arranjos, int total_arranjos, int M){
     arranjos->arranjos = (int**)malloc(total_arranjos * sizeof(int*));
     for(int i = 0; i < total_arranjos; i++){
         arranjos->arranjos[i] = (int*)malloc(M * sizeof(int));
     }
 }
+//Libera a memória alocada dinamicamente para vetor_arranjos
 void free_vetor_arranjos(Arranjos *arranjos, int total_arranjos){
     for(int i = 0; i < total_arranjos; i++){
         free(arranjos->arranjos[i]);
     }
     free(arranjos->arranjos);
 }
+
+//Função que calcula o total de arranjos possiveis
 int set_total_arranjos(Arranjos *arranjos, int N, int P){
     int p = N - P;
     int fact_N = 1;
@@ -120,12 +123,15 @@ int set_total_arranjos(Arranjos *arranjos, int N, int P){
     }
     return(set_total_arranjos(arranjos, N, P-1));
 }
+
 int get_total_arranjos(Arranjos *arranjos){
     return arranjos->total_arranjos;
 }
+
 void set_arranjos_uteis(Arranjos *arranjos){
     arranjos->arranjos_uteis += 1;
 }
+
 int get_arranjos_uteis(Arranjos *arranjos){
     return arranjos->arranjos_uteis;
 }
